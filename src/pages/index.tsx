@@ -1,25 +1,29 @@
-"use client";
-import React, { useEffect } from "react";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import CategoryCard from "@/components/categorycard";
-// Ensure the correct import path for your JSON file
-import Category from "@/interfaces/Category";
-import { Box, Flex } from "@chakra-ui/react";
-import { useSearchParams } from "next/navigation";
+import Head from 'next/head'
+import Image from 'next/image'
+import { Inter } from 'next/font/google'
+import styles from '@/styles/Home.module.css'
+import {
+  useRouter
+} from "next/router"
+import { useSession, signIn, signOut } from "next-auth/react"
+import {
+  Button
+} from "@chakra-ui/react"
+import Header from '@/components/header'
+import CategoryCard from '@/components/categorycard'
+import Footer from '@/components/footer'
 
-const CategoryPage: React.FC = () => {
-  const searchParams = useSearchParams();
+const inter = Inter({ subsets: ['latin'] })
 
-  const search = searchParams.get("cat");
-
+export default function Home() {
   return (
     <>
-      <Header />
-      <CategoryCard category={{ name: "", description: "", imageUrl: "" }} />
-      <Footer />
+      <Header/>
+      <CategoryCard category={{description:"", imageUrl:"", name:""}}/>
+            <Button onClick={() => signIn()}>
+        LOGGEARSE
+      </Button>
+      <Footer/>
     </>
-  );
-};
-
-export default CategoryPage;
+  )
+}
