@@ -1,0 +1,22 @@
+[
+    {
+      "name": "Physics",
+      "description": "Physics is the study of matter, energy, and the fundamental forces of nature."
+    },
+    {
+      "name": "Chemistry",
+      "description": "Chemistry is the science that deals with the composition, structure, and properties of substances."
+    },
+    {
+      "name": "Biology",
+      "description": "Biology is the study of living organisms and their interactions with each other and their environment."
+    },
+    {
+      "name": "Astronomy",
+      "description": "Astronomy is the scientific study of celestial objects such as stars, planets, and galaxies."
+    },
+    {
+      "name": "Geology",
+      "description": "Geology is the study of the Earth's structure, composition, and the processes that shape it."
+    }
+  ]
