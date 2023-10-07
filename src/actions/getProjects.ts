@@ -30,6 +30,16 @@ async function getProjects(){
                 createdAt: new Date(),
                 updatedAt: new Date(),
                 deletedAt: undefined
+            },
+            community: {
+                members: [
+                    {
+                        userId:"user1",
+                        joinedAt: new Date()
+                    }
+                ],
+                comments: [],
+                id: "111"
             }
         }
     ]

@@ -8,6 +8,7 @@ type Project = {
     description:string;
     meta: Meta;
     about: string;
+    community: Community;
 }
 
 type ProjectFile = {
