@@ -17,11 +17,12 @@ import {
   VisuallyHidden,
   List,
   ListItem,
+  Link,
 } from "@chakra-ui/react";
 
 export default function Files() {
   return (
-    <Container maxW={"7xl"}>
+    <Flex maxW={"full"} align="center" justify="center">
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
@@ -37,31 +38,44 @@ export default function Files() {
               />
             }
           >
-            <Box>
+            <Box
+              maxW="lg"
+              borderWidth="1px"
+              borderRadius="lg"
+              overflow="hidden"
+              p={4}
+            >
               <Text
-                fontSize={{ base: "16px", lg: "18px" }}
+                fontSize={"24px"}
                 color={useColorModeValue("yellow.500", "yellow.300")}
                 fontWeight={"500"}
                 textTransform={"uppercase"}
                 mb={"4"}
               >
-                Features
+                Files
               </Text>
 
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <List spacing={2}>
-                  <ListItem>Chronograph</ListItem>
-                  <ListItem>Master Chronometer Certified</ListItem>{" "}
-                  <ListItem>Tachymeter</ListItem>
+                  <ListItem>
+                    <Link fontWeight={"500"}>First file</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link fontWeight={"500"}>Second file</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link fontWeight={"500"}>Read Me</Link>
+                  </ListItem>
                 </List>
                 <List spacing={2}>
-                  <ListItem>Anti‑magnetic</ListItem>
-                  <ListItem>Chronometer</ListItem>
-                  <ListItem>Small seconds</ListItem>
+                  <ListItem>.dwg</ListItem>
+                  <ListItem>.pdf</ListItem>
+                  <ListItem>.txt</ListItem>
                 </List>
               </SimpleGrid>
+              <Button px={"4"}>Download All</Button>
             </Box>
-            <Box>
+            {/* <Box>
               <Text
                 fontSize={{ base: "16px", lg: "18px" }}
                 color={useColorModeValue("yellow.500", "yellow.300")}
@@ -117,10 +131,10 @@ export default function Files() {
                   5 bar (50 metres / 167 feet){" "}
                 </ListItem>
               </List>
-            </Box>
+            </Box> */}
           </Stack>
         </Stack>
       </SimpleGrid>
-    </Container>
+    </Flex>
   );
 }

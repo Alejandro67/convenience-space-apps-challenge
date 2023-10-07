@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, SetStateAction } from "react";
 import {
   Box,
   Flex,
@@ -13,13 +13,24 @@ import NextLink from "next/link";
 import {useSession, signIn} from "next-auth/react"
 import { Signika } from "next/font/google";
 
-const Header: React.FC = () => {
+const Header = ({ onChangeInput }: {onChangeInput:  (value: SetStateAction<string>) => void}) => {
+
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInput = (e: { target: { value: any; }; }) => {
+    const value = e.target.value;
+    setInputValue(value);
+    onChangeInput(value); // Call the callback function with the input value
+  };
+
+
+
   const {data:session} = useSession()
   return (
     <Box bg="#49C646" p={4}>
       <Flex alignItems="center" flexWrap="wrap">
         <Heading color="white" size="lg">
-          My Next.js App
+          OpenSC
         </Heading>
         <Input
           ml={"5%"}
@@ -28,6 +39,8 @@ const Header: React.FC = () => {
           placeholder="Search"
           width={"80"}
           size="lg"
+          value={inputValue}
+          onChange={handleInput}
         />
         <Spacer />
         <Box>
