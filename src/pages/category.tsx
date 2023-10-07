@@ -7,7 +7,7 @@ import CategoryCard from "@/components/categoryCard";
 import Category from "@/interfaces/Category";
 import { Box, Flex } from "@chakra-ui/react";
 import { useSearchParams} from "next/navigation";
-
+import {FaArrowLeft} from "react-icons/fa";
 
 
 const CategoryPage: React.FC = () => {
@@ -15,10 +15,13 @@ const CategoryPage: React.FC = () => {
     const searchParams = useSearchParams()
  
     const search = searchParams.get('cat')
+
+    
  
      return (
     <>
       <Header />
+      
       <h1>{search}</h1>
       <Footer />
     </>
