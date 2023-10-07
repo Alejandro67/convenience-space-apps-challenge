@@ -12,6 +12,9 @@ import Category from "../interfaces/Category";
 import Link from "next/link";
 
 
+
+
+
 interface CategoryCardProps {
   category: Category;
 }

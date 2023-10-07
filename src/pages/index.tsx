@@ -15,15 +15,47 @@ import CategoryCard from '../components/categoryCard'
 import Footer from '@/components/footer'
 import Categories from '../data/categories.json'
 import Category from '@/interfaces/Category'
+import { SetStateAction, useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
+
+
 export default function Home() {
+
+  const [filter,setFilter] = useState("");
+  const [categoriesObjects,setCategoriesObjects] = useState<Category[]>([]);
+
+  useEffect(()=> {
+    const filteredCategories = categoriesObjects.filter((category) =>
+    category.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  // Update the filtered categories in state
+  
+  if (filter === ""){
+    setCategoriesObjects(Categories);
+  }
+  else{
+  setCategoriesObjects(filteredCategories);
+}
+
+  },[filter])
+
+  useEffect(()=> {
+    setCategoriesObjects(Categories);
+
+  },[])
+
+  const handleInputChange = (value: SetStateAction<string>) => {
+    setFilter(value);
+  };
+
   return (
     <>
-      <Header />
+      <Header onChangeInput={handleInputChange}/>
       <Flex flexWrap="wrap">
-        {Categories.map((categoryObject: Category, index: number) => (
+        {categoriesObjects.map((categoryObject: Category, index: number) => (
           <Box
             key={index}
             flex={1}
