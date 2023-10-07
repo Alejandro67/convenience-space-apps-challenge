@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 import Image from 'next/image'
 import styles from './page.module.css'
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import Header from '@/components/header';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,12 +18,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-=======
 
->>>>>>> 2639a0a9b70f1fdfd590cddb179e099c3c43e31b
+
+
 
 export default function Home() {
   return (
     <Header></Header>
-  )
+  );
 }
