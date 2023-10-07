@@ -33,7 +33,7 @@ const ProjectOverview: React.FC = () => {
           Project Name
         </Heading>
       </Flex>
-      <Tabs variant="soft-rounded" colorScheme="green">
+      <Tabs mt={"1"} variant="soft-rounded" colorScheme="green">
         <TabList>
           <Tab>About</Tab>
           <Tab>Files</Tab>

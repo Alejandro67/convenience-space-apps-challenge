@@ -67,15 +67,21 @@ export default function About() {
               />
             }
           >
-            <VStack spacing={{ base: 4, sm: 6 }}>
+            <VStack align="left" spacing={{ base: 4, sm: 6 }}>
               <Text
                 color={useColorModeValue("gray.500", "gray.400")}
                 fontSize={"2xl"}
                 fontWeight={"300"}
               >
-                General description: Lorem ipsum dolor sit amet, consetetur
-                sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore
+                General description:
+              </Text>
+              <Text
+                color={useColorModeValue("gray.500", "gray.400")}
+                fontSize={"2xl"}
+                fontWeight={"300"}
+              >
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore
               </Text>
             </VStack>
 
