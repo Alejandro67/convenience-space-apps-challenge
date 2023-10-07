@@ -1,8 +1,10 @@
 import { Project } from "@/types/Project"
 import { ProjectFile } from "@/types/Project"
+import { collection, query, orderBy, onSnapshot, getDocs } from "firebase/firestore"
+import {db} from "../../firebase"
 
-async function getProjects(){
-    let projects: Project[] = [
+export default async function getProjects(){
+    /*let projects: Project[] = [
         {
             id: "1",
             name:"proyecto1",
@@ -43,5 +45,9 @@ async function getProjects(){
             }
         }
     ]
-    return projects
+    return projects*/
+    const querySnapshot = await getDocs(collection(db, "projects"));
+    const projectArray = querySnapshot.docs.map((doc) => doc.data()) as Project[]
+    console.log(projectArray)
+    return projectArray
 }
