@@ -22,7 +22,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
       <CardBody>
         <Image w={'25rem'} height={'15rem'} src={category.imageUrl} alt={category.name} borderRadius="lg" />
         <Stack mt="6" spacing="3">
-          <Link style={{fontSize:'1.3rem',color:'blue',textDecoration:'underline'}} href={category.name}>{category.name}</Link>
+          <Link style={{fontSize:'1.3rem',color:'blue',textDecoration:'underline'}} href={`/category?cat=${encodeURIComponent(category.name)}`}>{category.name}</Link>
           <Text>{category.description}</Text>
         </Stack>
       </CardBody>
