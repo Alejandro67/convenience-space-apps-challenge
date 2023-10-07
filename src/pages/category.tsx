@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import CategoryCard from "@/components/categoryCard";
@@ -7,6 +7,8 @@ import CategoryCard from "@/components/categoryCard";
 import Category from "@/interfaces/Category";
 import { Box, Flex } from "@chakra-ui/react";
 import { useSearchParams} from "next/navigation";
+
+
 
 const CategoryPage: React.FC = () => {
   
