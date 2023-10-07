@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, SetStateAction } from "react";
 import {
   Box,
   Flex,
@@ -13,7 +13,7 @@ import NextLink from "next/link";
 import {useSession, signIn} from "next-auth/react"
 import { Signika } from "next/font/google";
 
-const Header: React.FC = ({ onChangeInput }) => {
+const Header = ({ onChangeInput }: {onChangeInput:  (value: SetStateAction<string>) => void}) => {
 
   const [inputValue, setInputValue] = useState("");
 

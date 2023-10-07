@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
 import { ChakraProvider } from '@chakra-ui/react'
+import ProjectsProvider from '@/provider/ProjectsProvider'
 
 function MyApp({ 
   Component, 
@@ -12,7 +13,9 @@ function MyApp({
   return (
     <ChakraProvider>
       <SessionProvider session={session}>
-        <Component {...pageProps} />
+        <ProjectsProvider>
+         <Component {...pageProps} />
+        </ProjectsProvider>
       </SessionProvider>
     </ChakraProvider>
   )

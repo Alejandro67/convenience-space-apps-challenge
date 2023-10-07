@@ -15,6 +15,8 @@ import CategoryCard from '../components/categoryCard'
 import Footer from '@/components/footer'
 import Categories from '../data/categories.json'
 import Category from '@/interfaces/Category'
+import getProjects from "@/actions/getProjects"
+import { useProjects } from '@/provider/ProjectsProvider'
 import { SetStateAction, useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -22,6 +24,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export default function Home() {
+  const projectsContext = useProjects()
+  console.log("STATE:", projectsContext.state.projects)
 
   const [filter,setFilter] = useState("");
   const [categoriesObjects,setCategoriesObjects] = useState<Category[]>([]);
