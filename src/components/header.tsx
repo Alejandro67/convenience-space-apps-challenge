@@ -10,8 +10,11 @@ import {
 } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import NextLink from "next/link";
+import {useSession, signIn} from "next-auth/react"
+import { Signika } from "next/font/google";
 
 const Header: React.FC = () => {
+  const {data:session} = useSession()
   return (
     <Box bg="#49C646" p={4}>
       <Flex alignItems="center" flexWrap="wrap">
@@ -35,7 +38,7 @@ const Header: React.FC = () => {
             Meta
           </Heading>
         </Box>
-        <Box ml={8}>
+        <Box ml={8} onClick={() => signIn()}>
           <Avatar />
         </Box>
       </Flex>
