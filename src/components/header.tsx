@@ -10,27 +10,30 @@ import {
 } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import NextLink from "next/link";
-import {useSession, signIn} from "next-auth/react"
+import { useSession, signIn } from "next-auth/react";
 import { Signika } from "next/font/google";
 
-const Header = ({ onChangeInput }: {onChangeInput:  (value: SetStateAction<string>) => void}) => {
-
+const Header = ({
+  onChangeInput,
+}: {
+  onChangeInput: (value: SetStateAction<string>) => void;
+}) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleInput = (e: { target: { value: any; }; }) => {
+  const handleInput = (e: { target: { value: any } }) => {
     const value = e.target.value;
     setInputValue(value);
     onChangeInput(value); // Call the callback function with the input value
   };
 
-
-
-  const {data:session} = useSession()
+  const { data: session } = useSession();
   return (
     <Box bg="#49C646" p={4}>
       <Flex alignItems="center" flexWrap="wrap">
         <Heading color="white" size="lg">
-          OpenSC
+          <Link href="/" _hover={{ textDecoration: "none" }}>
+            OpenSC
+          </Link>
         </Heading>
         <Input
           ml={"5%"}

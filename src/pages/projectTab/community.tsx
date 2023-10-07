@@ -49,7 +49,7 @@ export default function Community() {
           Send Message
         </Button>
       </Flex>
-      <Flex bg="grey.500" mt={"10"} direction="column" w="100%">
+      <Flex bg="gray.200" mt={"10"} direction="column" w="100%">
         <Link fontSize={"20"} color="blue.500">
           user.name
         </Link>

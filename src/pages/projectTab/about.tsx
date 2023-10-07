@@ -107,7 +107,7 @@ export default function About() {
                   <Text as={"span"} fontWeight={"bold"}>
                     Category:
                   </Text>{" "}
-                  Phisics, Mechanics
+                  Physics, Mechanics
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>

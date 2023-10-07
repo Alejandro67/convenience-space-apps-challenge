@@ -24,7 +24,7 @@ import {
 export default function Files() {
   return (
     <Flex
-      bg="grey.500"
+      bg="gray.200"
       borderWidth={"2px"}
       borderRadius={"3xl"}
       w="100%"
@@ -35,7 +35,16 @@ export default function Files() {
       p={"4"}
     >
       <Flex>
-        <Flex direction="Column" m={"4"} p={"4"}>
+        <Text
+          fontSize={{ base: "16px", lg: "18px" }}
+          color={useColorModeValue("yellow.500", "yellow.300")}
+          fontWeight={"500"}
+          textTransform={"uppercase"}
+          mb={"4"}
+        >
+          FILES
+        </Text>
+        <Flex direction="column" m={"4"} p={"4"}>
           <Text fontSize={20} fontWeight={600}>
             File Name
           </Text>
@@ -53,7 +62,7 @@ export default function Files() {
             File 4
           </Link>
         </Flex>
-        <Flex direction="Column" m={"4"} p={"4"}>
+        <Flex direction="column" m={"4"} p={"4"}>
           <Text fontSize={20} fontWeight={600}>
             File Size
           </Text>
@@ -62,7 +71,7 @@ export default function Files() {
           <Text fontSize={20}>300mb</Text>
           <Text fontSize={20}>400mb</Text>
         </Flex>
-        <Flex direction="Column" m={"4"} p={"4"}>
+        <Flex direction="column" m={"4"} p={"4"}>
           <Text fontSize={20} fontWeight={600}>
             File Type
           </Text>
@@ -73,7 +82,7 @@ export default function Files() {
         </Flex>
       </Flex>
 
-      <Button maxw={"4"} mt={"4"} p={"4"}>
+      <Button maxW={"4"} mt={"4"} p={"4"}>
         Download All
       </Button>
     </Flex>

@@ -17,17 +17,21 @@ import React, { useEffect, useState } from "react";
 const ProjectOverview: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
 
-  useEffect(() => {
-    // Realiza la carga de datos cuando el componente se monte
-    fetch("/data/projects.json")
-      .then((response) => response.json())
-      .then((data) => setProjects(data))
-      .catch((error) => console.error("Error al cargar los proyectos", error));
-  }, []);
+  // useEffect(() => {
+  //   // Realiza la carga de datos cuando el componente se monte
+  //   fetch("/data/projects.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setProjects(data))
+  //     .catch((error) => console.error("Error al cargar los proyectos", error));
+  // }, []);
+
+  const handleInputChange = (value: SetStateAction<string>) => {
+    setFilter(value);
+  };
 
   return (
     <>
-      <Header />
+      <Header onChangeInput={handleInputChange} />
       <Flex bg="#358262">
         <Heading size="lg" color="white" p={4} fontWeight={"bold"}>
           Project Name
