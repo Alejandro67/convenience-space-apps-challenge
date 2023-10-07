@@ -16,7 +16,7 @@ const Header: React.FC = () => {
     <Box bg="#49C646" p={4}>
       <Flex alignItems="center" flexWrap="wrap">
         <Heading color="white" size="lg">
-          My Next.js App
+          OpenSC
         </Heading>
         <Input
           ml={"5%"}

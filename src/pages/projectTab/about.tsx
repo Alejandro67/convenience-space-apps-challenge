@@ -21,7 +21,7 @@ import {
 
 export default function About() {
   return (
-    <Container maxW={"7xl"}>
+    <Container bg="white" maxW={"7xl"}>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
