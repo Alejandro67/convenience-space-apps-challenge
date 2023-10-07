@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Flex, Link, Heading, Button, Spacer, Avatar } from '@chakra-ui/react';
+import { Input } from '@chakra-ui/react'
 import NextLink from 'next/link';
 
 const Header: React.FC = () => {
@@ -9,15 +10,15 @@ const Header: React.FC = () => {
             <Heading color="white" size="lg">
               My Next.js App
             </Heading>
+            <Input ml={300} textColor={'black'} backgroundColor={'white'} placeholder='Search' width={'80'} size='lg' />
             <Spacer />
-            <Box>
+            <Box> 
               <Heading size="md" color="white" mb={2}>
-                lol
+                Username
               </Heading>
               <Heading size="md" color="white" mb={2}>
-                lol
+                Meta
               </Heading>
-              
             </Box>
             <Box ml={8}> 
           <Avatar />
