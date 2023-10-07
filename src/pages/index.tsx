@@ -7,7 +7,8 @@ import {
 } from "next/router"
 import { useSession, signIn, signOut } from "next-auth/react"
 import {
-  Button
+  Box,
+  Button, Flex
 } from "@chakra-ui/react"
 import Header from '@/components/header'
 import CategoryCard from '../components/categoryCard'
@@ -20,14 +21,20 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <Header/>
-      {Categories.map((categoryObject: Category, index: number) => (
-        <CategoryCard key={index} category={categoryObject} />
-      ))}
-        <Button onClick={() => signIn()}>
-        LOGGEARSE
-      </Button>
-      <Footer/>
+      <Header />
+      <Flex flexWrap="wrap">
+        {Categories.map((categoryObject: Category, index: number) => (
+          <Box
+            key={index}
+            flex={1}
+            flexBasis={`calc(100% / ${3})`} // Calculate the width based on the desired number of columns
+            p={2} // Adjust padding as needed
+          >
+            <CategoryCard category={categoryObject} />
+          </Box>
+        ))}
+      </Flex>
+      <Footer />
     </>
-  )
+  );
 }
