@@ -56,67 +56,66 @@ import { NewProject } from "@/interfaces/NewProject";
     };
   
     return (
-        <>
-          <Header />
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            minHeight="60vh"
-          >
-            <Box>
-              <form onSubmit={handleSubmit}>
-                <FormControl isRequired>
-                  <FormLabel>Name of the project</FormLabel>
-                  <Input
-                    backgroundColor="green.100"
-                    type="text"
-                    w="60%"
-                    value={nameInput}
-                    onChange={handleNameChange}
-                  />
-                  <FormLabel>Description</FormLabel>
-                  <Textarea
-                    backgroundColor="green.100"
-                    value={descriptionInput}
-                    onChange={handleDescriptionChange}
-                  />
+      <>
+        <Header />
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          minHeight="60vh"
+        >
+          <Box>
+            <form onSubmit={handleSubmit}>
+              <FormControl isRequired>
+                <FormLabel>Name of the project</FormLabel>
+                <Input
+                  backgroundColor={"green.100"}
+                  type="text"
+                  w="60%"
+                  value={nameInput}
+                  onChange={handleNameChange}
+                />
+                <FormLabel>Description</FormLabel>
+                <Textarea
+                  backgroundColor={"green.100"}
+                  value={descriptionInput}
+                  onChange={handleDescriptionChange}
+                />
                 </FormControl>
-      
+                <FormLabel>
+                  Select the categories that describe the project the most
+                </FormLabel>
+  
+                <CheckboxGroup
+                  value={categoryInput}
+                  onChange={handleCheckboxChange}
+                  colorScheme="green"
+                >
+                  <Stack spacing={[1, 5]} direction={["column"]}>
+                    <Checkbox value="physics">physics</Checkbox>
+                    <Checkbox value="chemistry">chemistry</Checkbox>
+                    <Checkbox value="biology">biology</Checkbox>
+                    <Checkbox value="astrology">astrology</Checkbox>
+                    <Checkbox value="geology">geology</Checkbox>
+                  </Stack>
+                </CheckboxGroup>
+                <br />
                 <FormControl isRequired>
-                  <FormLabel>
-                    Select the categories that describe the project the most
-                  </FormLabel>
-                  <CheckboxGroup
-                    value={categoryInput}
-                    onChange={handleCheckboxChange}
-                    colorScheme="green"
-                  >
-                    <Stack spacing={[1, 5]} direction={["column"]}>
-                      <Checkbox value="physics">physics</Checkbox>
-                      <Checkbox value="chemistry">chemistry</Checkbox>
-                      <Checkbox value="biology">biology</Checkbox>
-                      <Checkbox value="astrology">astrology</Checkbox>
-                      <Checkbox value="geology">geology</Checkbox>
-                    </Stack>
-                  </CheckboxGroup>
+                <FormLabel>Image input</FormLabel>
+  
+                <Input onChange={handleFileChange} type="file" />
                 </FormControl>
-      
-                <FormControl isRequired>
-                  <FormLabel>Image input</FormLabel>
-                  <Input onChange={handleFileChange} type="file" />
-                </FormControl>
-      
                 <Button type="submit" colorScheme="teal" mt={4}>
                   Submit
                 </Button>
-              </form>
-            </Box>
-            <Footer />
+              
+            </form>
           </Box>
-        </>
-      );
+          <Footer />
+        </Box>
+      </>
+    );
   };
   
   export default NewProjectScreen;
