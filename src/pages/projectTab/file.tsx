@@ -18,123 +18,73 @@ import {
   List,
   ListItem,
   Link,
+  UnorderedList,
 } from "@chakra-ui/react";
 
 export default function Files() {
   return (
-    <Flex maxW={"full"} align="center" justify="center">
-      <SimpleGrid
-        columns={{ base: 1, lg: 2 }}
-        spacing={{ base: 8, md: 10 }}
-        py={{ base: 18, md: 24 }}
-      >
-        <Stack spacing={{ base: 6, md: 10 }}>
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={"column"}
-            divider={
-              <StackDivider
-                borderColor={useColorModeValue("gray.200", "gray.600")}
-              />
-            }
-          >
-            <Box
-              maxW="lg"
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              p={4}
-            >
-              <Text
-                fontSize={"24px"}
-                color={useColorModeValue("yellow.500", "yellow.300")}
-                fontWeight={"500"}
-                textTransform={"uppercase"}
-                mb={"4"}
-              >
-                Files
-              </Text>
+    <Flex
+      bg="gray.200"
+      borderWidth={"2px"}
+      borderRadius={"3xl"}
+      w="100%"
+      direction="column"
+      align="center"
+      h="95%"
+      m={"4"}
+      p={"4"}
+    >
+      <Flex>
+        <Text
+          fontSize={{ base: "16px", lg: "18px" }}
+          color={useColorModeValue("yellow.500", "yellow.300")}
+          fontWeight={"500"}
+          textTransform={"uppercase"}
+          mb={"4"}
+        >
+          FILES
+        </Text>
+        <Flex direction="column" m={"4"} p={"4"}>
+          <Text fontSize={20} fontWeight={600}>
+            File Name
+          </Text>
 
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                <List spacing={2}>
-                  <ListItem>
-                    <Link fontWeight={"500"}>First file</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link fontWeight={"500"}>Second file</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link fontWeight={"500"}>Read Me</Link>
-                  </ListItem>
-                </List>
-                <List spacing={2}>
-                  <ListItem>.dwg</ListItem>
-                  <ListItem>.pdf</ListItem>
-                  <ListItem>.txt</ListItem>
-                </List>
-              </SimpleGrid>
-              <Button px={"4"}>Download All</Button>
-            </Box>
-            {/* <Box>
-              <Text
-                fontSize={{ base: "16px", lg: "18px" }}
-                color={useColorModeValue("yellow.500", "yellow.300")}
-                fontWeight={"500"}
-                textTransform={"uppercase"}
-                mb={"4"}
-              >
-                Product Details
-              </Text>
+          <Link fontSize={20} fontWeight={600} color="blue.500">
+            File 1
+          </Link>
+          <Link fontSize={20} fontWeight={600} color="blue.500">
+            File 2
+          </Link>
+          <Link fontSize={20} fontWeight={600} color="blue.500">
+            File 3
+          </Link>
+          <Link fontSize={20} fontWeight={600} color="blue.500">
+            File 4
+          </Link>
+        </Flex>
+        <Flex direction="column" m={"4"} p={"4"}>
+          <Text fontSize={20} fontWeight={600}>
+            File Size
+          </Text>
+          <Text fontSize={20}>100mb</Text>
+          <Text fontSize={20}>200mb</Text>
+          <Text fontSize={20}>300mb</Text>
+          <Text fontSize={20}>400mb</Text>
+        </Flex>
+        <Flex direction="column" m={"4"} p={"4"}>
+          <Text fontSize={20} fontWeight={600}>
+            File Type
+          </Text>
+          <Text fontSize={20}>.doc</Text>
+          <Text fontSize={20}>.pdf</Text>
+          <Text fontSize={20}>.dxf</Text>
+          <Text fontSize={20}>.txt</Text>
+        </Flex>
+      </Flex>
 
-              <List spacing={2}>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Between lugs:
-                  </Text>{" "}
-                  20 mm
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Bracelet:
-                  </Text>{" "}
-                  leather strap
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Case:
-                  </Text>{" "}
-                  Steel
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Case diameter:
-                  </Text>{" "}
-                  42 mm
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Dial color:
-                  </Text>{" "}
-                  Black
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Crystal:
-                  </Text>{" "}
-                  Domed, scratch‑resistant sapphire crystal with anti‑reflective
-                  treatment inside
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Water resistance:
-                  </Text>{" "}
-                  5 bar (50 metres / 167 feet){" "}
-                </ListItem>
-              </List>
-            </Box> */}
-          </Stack>
-        </Stack>
-      </SimpleGrid>
+      <Button maxW={"4"} mt={"4"} p={"4"}>
+        Download All
+      </Button>
     </Flex>
   );
 }

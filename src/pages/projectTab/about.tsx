@@ -17,6 +17,7 @@ import {
   VisuallyHidden,
   List,
   ListItem,
+  Link,
 } from "@chakra-ui/react";
 
 export default function About() {
@@ -67,15 +68,21 @@ export default function About() {
               />
             }
           >
-            <VStack spacing={{ base: 4, sm: 6 }}>
+            <VStack align="left" spacing={{ base: 4, sm: 6 }}>
               <Text
                 color={useColorModeValue("gray.500", "gray.400")}
                 fontSize={"2xl"}
                 fontWeight={"300"}
               >
-                General description: Lorem ipsum dolor sit amet, consetetur
-                sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore
+                General description:
+              </Text>
+              <Text
+                color={useColorModeValue("gray.500", "gray.400")}
+                fontSize={"2xl"}
+                fontWeight={"300"}
+              >
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore
               </Text>
             </VStack>
 
@@ -93,6 +100,12 @@ export default function About() {
               <List spacing={2}>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
+                    Creator:
+                  </Text>{" "}
+                  <Link color="blue.400">John Smith</Link>
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
                     Creation date:
                   </Text>{" "}
                   meta
@@ -101,13 +114,7 @@ export default function About() {
                   <Text as={"span"} fontWeight={"bold"}>
                     Category:
                   </Text>{" "}
-                  Phisics, Mechanics
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Community:
-                  </Text>{" "}
-                  Makers
+                  Physics, Mechanics
                 </ListItem>
               </List>
             </Box>

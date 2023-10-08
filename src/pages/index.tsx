@@ -1,55 +1,47 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import {
-  useRouter
-} from "next/router"
-import { useSession, signIn, signOut } from "next-auth/react"
-import {
-  Box,
-  Button, Flex
-} from "@chakra-ui/react"
-import Header from '@/components/header'
-import CategoryCard from '../components/categoryCard'
-import Footer from '@/components/footer'
-import Categories from '../data/categories.json'
-import Category from '@/interfaces/Category'
-import getProjects from "@/actions/project.action"
-import { useProjects } from '@/provider/ProjectsProvider'
-import { SetStateAction, useEffect, useState } from 'react'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
+import Header from "@/components/header";
+import CategoryCard from "../components/categoryCard";
+import Footer from "@/components/footer";
+import Categories from "../data/categories.json";
+import Category from "@/interfaces/Category";
+import getProjects from "@/actions/project.action";
+import { useProjects } from "@/provider/ProjectsProvider";
+import { SetStateAction, useEffect, useState } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
-
-
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const projectsContext = useProjects()
-  console.log("STATE:", projectsContext.state.projects)
+  const projectsContext = useProjects();
+  console.log("STATE:", projectsContext.state.projects);
 
-  const [filter,setFilter] = useState("");
-  const [categoriesObjects,setCategoriesObjects] = useState<Category[]>([]);
+  const [filter, setFilter] = useState("");
+  const [categoriesObjects, setCategoriesObjects] = useState<Category[]>([]);
 
-  useEffect(()=> {
+  useEffect(() => {
     const filteredCategories = categoriesObjects.filter((category) =>
-    category.name.toLowerCase().includes(filter.toLowerCase())
-  );
+      category.name.toLowerCase().includes(filter.toLowerCase())
+    );
 
-  // Update the filtered categories in state
-  
-  if (filter === ""){
+    // Update the filtered categories in state
+
+    if (filter === "") {
+      setCategoriesObjects(Categories);
+    } else {
+      setCategoriesObjects(filteredCategories);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
+
+  useEffect(() => {
     setCategoriesObjects(Categories);
-  }
-  else{
-  setCategoriesObjects(filteredCategories);
-}
-
-  },[filter])
-
-  useEffect(()=> {
-    setCategoriesObjects(Categories);
-
-  },[])
+  }, []);
 
   const handleInputChange = (value: SetStateAction<string>) => {
     setFilter(value);
@@ -57,7 +49,7 @@ export default function Home() {
 
   return (
     <>
-      <Header onChangeInput={handleInputChange}/>
+      <Header onChangeInput={handleInputChange} />
       <Flex flexWrap="wrap">
         {categoriesObjects.map((categoryObject: Category, index: number) => (
           <Box
