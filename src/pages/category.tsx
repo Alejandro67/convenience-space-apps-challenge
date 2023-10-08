@@ -43,9 +43,10 @@ const CategoryPage: React.FC = () => {
     let formattedListProjects:Project[] = [];
     console.log(listProjects)
     listProjects.forEach(project => {
+      if(search){
         if (project.categories.includes(search?.toString())){
             formattedListProjects.push(project);
-        }
+        }}
         setBackup(formattedListProjects)
     });
     setProjectsObjects(formattedListProjects);
