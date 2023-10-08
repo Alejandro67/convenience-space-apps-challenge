@@ -30,7 +30,7 @@ const CategoryPage: React.FC = () => {
     // Update the filtered categories in state
 
     if (filter === "") {
-      //@ts-ignore
+      
       setProjectsObjects(backup);
     } else {
       setProjectsObjects(filteredProjects);
@@ -38,7 +38,7 @@ const CategoryPage: React.FC = () => {
   }, [filter]);
 
   useEffect(() => {
-    //@ts-ignore
+    
     let listProjects = projectContext.state.projects;
     let formattedListProjects:Project[] = [];
     console.log(listProjects)

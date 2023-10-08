@@ -18,14 +18,16 @@ import Link from "next/link";
 const Header = ({
   onChangeInput,
 }: {
-  onChangeInput: (value: SetStateAction<string>) => void;
+  onChangeInput?: (value: SetStateAction<string>) => void;
 }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInput = (e: { target: { value: any } }) => {
+    if (onChangeInput){
     const value = e.target.value;
     setInputValue(value);
-    onChangeInput(value); // Call the callback function with the input value
+    onChangeInput(value);
+    } 
   };
 
   const { data: session } = useSession();
@@ -51,7 +53,7 @@ const Header = ({
           onChange={handleInput}
         />
         <Button ml={'2%'} textColor={'white'} background='#358262' _hover={{ bg: '#333',cursor: 'default' }} size='md'>
-        <Link href="/category">New project</Link> 
+        <Link href="/new-project">New project</Link> 
         </Button>
         <Spacer />
         <Box>
