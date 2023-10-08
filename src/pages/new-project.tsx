@@ -81,6 +81,7 @@ import { useRouter } from "next/router";
           deletedAt: null
         },
         communityId: communityId,
+        author: sessionContext.data?.user?.email
       } as ProjectObject
 
     projectsContext.createProject(newProject)
