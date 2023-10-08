@@ -17,6 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {/* Set a fixed minHeight */}
         <CardBody>
           <Stack mt="6" spacing="3">
+            <Image src={project.image}/>
             <Link
               href={`/projectoverview?id=${project.id}`}
               style={{
