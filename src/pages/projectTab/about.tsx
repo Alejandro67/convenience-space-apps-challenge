@@ -17,6 +17,7 @@ import {
   VisuallyHidden,
   List,
   ListItem,
+  Link,
 } from "@chakra-ui/react";
 
 export default function About() {
@@ -99,6 +100,12 @@ export default function About() {
               <List spacing={2}>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
+                    Creator:
+                  </Text>{" "}
+                  <Link color="blue.400">John Smith</Link>
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
                     Creation date:
                   </Text>{" "}
                   meta
@@ -108,12 +115,6 @@ export default function About() {
                     Category:
                   </Text>{" "}
                   Physics, Mechanics
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Community:
-                  </Text>{" "}
-                  Makers
                 </ListItem>
               </List>
             </Box>
