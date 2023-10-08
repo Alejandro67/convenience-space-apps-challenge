@@ -157,7 +157,7 @@ import { url } from "inspector";
                   colorScheme="green"
                 >
                   <Stack spacing={[1, 5]} direction={["column"]}>
-                    <Checkbox value="asd">physics</Checkbox>
+                    <Checkbox value="physics">physics</Checkbox>
                     <Checkbox value="chemistry">chemistry</Checkbox>
                     <Checkbox value="biology">biology</Checkbox>
                     <Checkbox value="astrology">astrology</Checkbox>
