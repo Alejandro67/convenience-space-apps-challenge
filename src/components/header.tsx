@@ -33,7 +33,7 @@ const Header = ({
     <Box bg="#49C646" p={4}>
       <Flex alignItems="center" flexWrap="wrap">
         <Heading color="white" size="lg">
-          <Button _hover={{ bg: '#49C646' }} variant={"ghost"}>
+          <Button _hover={{ bg: '#49C646',cursor: 'default' }} variant={"ghost"}>
           <Link href="/">
            <Text  fontSize={"2xl"} color={'white'}>OpenSC</Text> 
           </Link>
@@ -50,7 +50,7 @@ const Header = ({
           value={inputValue}
           onChange={handleInput}
         />
-        <Button ml={'2%'} textColor={'white'} background='#358262' _hover={{ bg: '#333' }} size='md'>
+        <Button ml={'2%'} textColor={'white'} background='#358262' _hover={{ bg: '#333',cursor: 'default' }} size='md'>
         <Link href="/category">New project</Link> 
         </Button>
         <Spacer />
