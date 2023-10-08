@@ -61,7 +61,6 @@ export default function Home() {
             <CategoryCard category={categoryObject} />
           </Box>
         ))}
-        <Link href="/projectoverview">Projects</Link>
       </Flex>
       <Footer />
     </>

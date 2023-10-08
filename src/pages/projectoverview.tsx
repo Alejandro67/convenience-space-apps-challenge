@@ -51,7 +51,7 @@ const ProjectOverview: React.FC = () => {
   return (
     <>
       <Header onChangeInput={handleInputChange} />
-      <Flex bg="#358262">
+      <Flex bg="#333">
         <Heading size="lg" color="white" p={4} fontWeight={"bold"}>
           Project Name
         </Heading>
