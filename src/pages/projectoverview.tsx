@@ -12,28 +12,51 @@ import Community from "./projectTab/community";
 import Files from "./projectTab/file";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import React, { useEffect, useState } from "react";
+import Categories from "../data/categories.json";
+import Category from "@/interfaces/Category";
+import { useProjects } from "@/provider/ProjectsProvider";
+import { SetStateAction, useEffect, useState } from "react";
 
 const ProjectOverview: React.FC = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const projectsContext = useProjects();
+  console.log("STATE:", projectsContext.state.projects);
+
+  const [filter, setFilter] = useState("");
+  const [categoriesObjects, setCategoriesObjects] = useState<Category[]>([]);
 
   useEffect(() => {
-    // Realiza la carga de datos cuando el componente se monte
-    fetch("/data/projects.json")
-      .then((response) => response.json())
-      .then((data) => setProjects(data))
-      .catch((error) => console.error("Error al cargar los proyectos", error));
+    const filteredCategories = categoriesObjects.filter((category) =>
+      category.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    // Update the filtered categories in state
+
+    if (filter === "") {
+      setCategoriesObjects(Categories);
+    } else {
+      setCategoriesObjects(filteredCategories);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
+
+  useEffect(() => {
+    setCategoriesObjects(Categories);
   }, []);
+
+  const handleInputChange = (value: SetStateAction<string>) => {
+    setFilter(value);
+  };
 
   return (
     <>
-      <Header />
+      <Header onChangeInput={handleInputChange} />
       <Flex bg="#358262">
         <Heading size="lg" color="white" p={4} fontWeight={"bold"}>
           Project Name
         </Heading>
       </Flex>
-      <Tabs variant="soft-rounded" colorScheme="green">
+      <Tabs mt={"1"} variant="soft-rounded" colorScheme="green">
         <TabList>
           <Tab>About</Tab>
           <Tab>Files</Tab>
