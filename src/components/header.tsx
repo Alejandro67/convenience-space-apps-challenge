@@ -2,28 +2,32 @@ import React, { useState, SetStateAction } from "react";
 import {
   Box,
   Flex,
-  Link,
   Heading,
   Button,
   Spacer,
   Avatar,
+  Text
 } from "@chakra-ui/react";
+
 import { Input } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { useSession, signIn } from "next-auth/react";
 import { Signika } from "next/font/google";
+import Link from "next/link";
 
 const Header = ({
   onChangeInput,
 }: {
-  onChangeInput: (value: SetStateAction<string>) => void;
+  onChangeInput?: (value: SetStateAction<string>) => void;
 }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInput = (e: { target: { value: any } }) => {
+    if (onChangeInput){
     const value = e.target.value;
     setInputValue(value);
-    onChangeInput(value); // Call the callback function with the input value
+    onChangeInput(value);
+    } 
   };
 
   const { data: session } = useSession();
@@ -31,12 +35,15 @@ const Header = ({
     <Box bg="#49C646" p={4}>
       <Flex alignItems="center" flexWrap="wrap">
         <Heading color="white" size="lg">
-          <Link href="/" _hover={{ textDecoration: "none" }}>
-            OpenSC
+          <Button _hover={{ bg: '#49C646',cursor: 'default' }} variant={"ghost"}>
+          <Link href="/">
+           <Text  fontSize={"2xl"} color={'white'}>OpenSC</Text> 
           </Link>
+          </Button>
+          
         </Heading>
         <Input
-          ml={"5%"}
+          ml={"3%"}
           textColor={"black"}
           backgroundColor={"white"}
           placeholder="Search"
@@ -45,6 +52,9 @@ const Header = ({
           value={inputValue}
           onChange={handleInput}
         />
+        <Button ml={'2%'} textColor={'white'} background='#358262' _hover={{ bg: '#333',cursor: 'default' }} size='md'>
+        <Link href="/new-project">New project</Link> 
+        </Button>
         <Spacer />
         <Box>
           <Heading size="md" color="white" mb={2}>
