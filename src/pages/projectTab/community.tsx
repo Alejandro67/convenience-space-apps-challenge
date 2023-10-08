@@ -73,13 +73,34 @@ export default function Community() {
       <Flex bg="gray.200" mt={"10"} direction="column" w="100%">
         <Link href="/">
           <Text fontSize={"20"} color="blue.500">
-            user.name
+            user.scientist1
           </Text>
         </Link>
         <Text fontSize={"18"}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, rerum?
-          Obcaecati ut animi delectus cupiditate esse itaque. Quis, tempora
-          similique!
+          I never heard of this toppic, could you be more specific about how to
+          get those values and results?
+        </Text>
+      </Flex>
+      <Flex bg="gray.200" mt={"10"} direction="column" w="100%">
+        <Link href="/">
+          <Text fontSize={"20"} color="blue.500">
+            user.scientist2
+          </Text>
+        </Link>
+        <Text fontSize={"18"}>
+          Try reading this project about how @user.scientist4 reached a
+          satisfactory result on a similar test.
+        </Text>
+      </Flex>
+      <Flex bg="gray.200" mt={"10"} direction="column" w="100%">
+        <Link href="/">
+          <Text fontSize={"20"} color="blue.500">
+            user.scientist3
+          </Text>
+        </Link>
+        <Text fontSize={"18"}>
+          This is amazing! I ve never think of it that way! this may lead to a
+          great improvement in physics studies.
         </Text>
       </Flex>
     </Flex>

@@ -82,7 +82,7 @@ export default function Files() {
         </Flex>
       </Flex>
 
-      <Button maxW={"4"} mt={"4"} p={"4"}>
+      <Button mt={"4"} p={"4"}>
         Download All
       </Button>
     </Flex>

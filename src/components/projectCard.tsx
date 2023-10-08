@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <CardBody>
           <Stack mt="6" spacing="3">
             <Link
-              href="/projectoverview"
+              href={`/projectoverview?id=${project.id}`}
               style={{
                 fontSize: "1.3rem",
                 color: "blue",
