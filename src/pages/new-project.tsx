@@ -56,24 +56,15 @@ import { useRouter } from "next/router";
     };
   
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-     /* if(nameInput === "" || !nameInput){
-        return toast({
-          title:"Error",
-          description:"You must provide a name for the project"
-        })
+      if(nameInput === "" || !nameInput){
+        return alert("You must provide a name for the project")
       }
-      if(categoryInput.length === 0){
-        return toast({
-          title:"Error",
-          description:"You must select at least one category for this project"
-        })
-      }
+      // if(categoryInput.length === 0){
+      //   return alert("You must select at least one category for this project")
+      // }
       if(descriptionInput === "" || !descriptionInput){
-        return toast({
-          title:"Error",
-          description:"You must provide a description for the project"
-        })
-      }*/
+        return alert("You must provide a description for the project")
+      }
       event.preventDefault();
 
       let imageURL = ""
