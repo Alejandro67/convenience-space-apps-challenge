@@ -10,7 +10,6 @@ import CategoryCard from "../components/categoryCard";
 import Footer from "@/components/footer";
 import Categories from "../data/categories.json";
 import Category from "@/interfaces/Category";
-import getProjects from "@/actions/project.action";
 import { useProjects } from "@/provider/ProjectsProvider";
 import { SetStateAction, useEffect, useState } from "react";
 
