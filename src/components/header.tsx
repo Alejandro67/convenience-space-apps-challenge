@@ -11,7 +11,7 @@ import {
 
 import { Input } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { useSession, signIn } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { Signika } from "next/font/google";
 import Link from "next/link";
 
@@ -21,7 +21,7 @@ const Header = ({
   onChangeInput?: (value: SetStateAction<string>) => void;
 }) => {
   const [inputValue, setInputValue] = useState("");
-
+  const sessionContext = useSession()
   const handleInput = (e: { target: { value: any } }) => {
     if (onChangeInput){
     const value = e.target.value;
@@ -30,7 +30,7 @@ const Header = ({
     } 
   };
 
-  const { data: session } = useSession();
+  console.log(sessionContext.data?.user?.image)
   return (
     <Box bg="#49C646" p={4}>
       <Flex alignItems="center" flexWrap="wrap">
@@ -56,17 +56,36 @@ const Header = ({
         <Link href="/new-project">New project</Link> 
         </Button>
         <Spacer />
-        <Box>
-          <Heading size="md" color="white" mb={2}>
-            Username
-          </Heading>
-          <Heading size="md" color="white" mb={2}>
-            Meta
-          </Heading>
-        </Box>
-        <Box ml={8} onClick={() => signIn()}>
-          <Avatar />
-        </Box>
+        {sessionContext.status === "authenticated"
+        ?
+        <Flex>
+          <Box>
+            <Heading size="md" color="white" mb={2}>
+              {sessionContext.data?.user?.name}
+            </Heading>
+            <Heading size="md" color="white" mb={2}>
+              {sessionContext.data?.user?.email}
+            </Heading>
+          </Box>
+          <Box ml={8} onClick={() => signOut()}>
+            <Avatar src={sessionContext?.data?.user?.image || ""}/>
+          </Box>
+        </Flex>
+        :
+          <Box>
+            <Heading 
+              onClick={() => signIn()} 
+              color="white" 
+              cursor={"pointer"}
+              _hover={{
+                textDecor:"underline"
+              }}>
+              Log in / Register
+            </Heading>
+          </Box>
+        }
+        
+
       </Flex>
     </Box>
   );

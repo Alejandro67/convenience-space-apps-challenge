@@ -9,6 +9,7 @@ type Project = {
   about: string;
   communityId: string;
   image: string;
+  author: string
 };
 
 type ProjectFile = {

@@ -7,4 +7,5 @@ export interface ProjectObject {
   about: string;
   communityId: string;
   image: string;
+  author: string;
 }
