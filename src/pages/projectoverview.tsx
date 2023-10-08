@@ -34,6 +34,7 @@ import { useProjects } from "@/provider/ProjectsProvider";
 import { SetStateAction, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Project } from "@/types/Project";
+import { useSession } from "next-auth/react";
 
 const ProjectOverview: React.FC = () => {
   const projectsContext = useProjects();
@@ -79,6 +80,7 @@ const ProjectOverview: React.FC = () => {
     setFilter(value);
   };
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
+  const sessionContext = useSession()
 
   // Función para alternar el estado de autenticación
   const toggleAuthentication = () => {
@@ -159,7 +161,7 @@ const ProjectOverview: React.FC = () => {
                         </ListItem>
                         <ListItem>
                           <Text as={"span"} fontWeight={"bold"}>
-                            Creation date: {project?.meta?.createdAt ? project.meta.createdAt.toString() : ""}
+                            Creation date: {project?.meta.createdAt.toString() || ""}
                           </Text>{" "}
                         </ListItem>
                         <ListItem>
@@ -244,7 +246,7 @@ const ProjectOverview: React.FC = () => {
           <TabPanel>
             {/* import community Component */}
             <Flex direction="column">
-              {userIsLoggedIn ? (
+              {sessionContext.data?.user?.name ? (
                 // Si el usuario está autenticado, muestra el formulario
                 <Flex maxW={"lg"} direction="column" justify="center">
                   <FormControl>
@@ -271,18 +273,21 @@ const ProjectOverview: React.FC = () => {
                 </Flex>
               ) : (
                 // Si el usuario no está autenticado, muestra el mensaje
-                <Text fontSize="lg" mt={4}>
-                  For suggestions or comments, please log in.
-                </Text>
+                <Box>
+                  <Text fontSize="lg" mt={4}>
+                    For suggestions or comments, please log in.
+                  </Text>
+                  <Button
+                  mt={"4"}
+                  w={"20"}
+                  onClick={toggleAuthentication}
+                  justifySelf={"left"}
+                >
+                  {userIsLoggedIn ? "Log out" : "Log in"}
+                </Button>
+                </Box>
               )}
-              <Button
-                mt={"4"}
-                w={"20"}
-                onClick={toggleAuthentication}
-                justifySelf={"left"}
-              >
-                {userIsLoggedIn ? "Log out" : "Log in"}
-              </Button>
+              
               <Flex bg="gray.200" mt={"10"} direction="column" w="100%">
                 <Link href="/">
                   <Text fontSize={"20"} color="blue.500">
