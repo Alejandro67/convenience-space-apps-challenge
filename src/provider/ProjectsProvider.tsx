@@ -1,5 +1,6 @@
 import ProjectActions from "@/actions/project.action";
 import getProjects from "@/actions/project.action";
+import { ProjectObject } from "@/interfaces/ProjectObject";
 import { Project } from "@/types/Project";
 import {createContext, useReducer, useEffect, useContext} from "react"
 
@@ -17,7 +18,7 @@ type State = {
     state: State;
     dispatch: React.Dispatch<DispatchPayload>;
     loadProjects: () => void;
-    createProject: (project:Project) => Promise<Project | undefined>
+    createProject: (project:ProjectObject) => Promise<Project | undefined>
   }>({
     state: {
       loading: false,
@@ -25,7 +26,7 @@ type State = {
     },
     dispatch: () => {},
     loadProjects: () => {},
-    createProject: (project:Project) => ({} as Promise<Project | undefined>)
+    createProject: (project:ProjectObject) => ({} as Promise<Project | undefined>)
   });
 
   function ProjectsReducer(state: State, action: DispatchPayload) {
@@ -58,7 +59,7 @@ type State = {
         }
     }
 
-    async function createProject(project:Project):Promise<Project | undefined>{
+    async function createProject(project:ProjectObject):Promise<Project | undefined>{
         try{
             const response = await ProjectActions.add(project)
             const updatedProjects = state.projects

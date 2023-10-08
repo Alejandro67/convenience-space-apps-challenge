@@ -8,17 +8,27 @@ import {
     Stack,
     Button,
     Box,
+    useToast,
   } from "@chakra-ui/react";
   import Footer from "@/components/footer";
   import Header from "@/components/header";
   import { SetStateAction, useState } from "react";
-import { NewProject } from "@/interfaces/NewProject";
+import { ProjectObject } from "@/interfaces/ProjectObject";
+import { useSession } from "next-auth/react";
+import { Project } from "@/types/Project";
+import Category from "@/interfaces/Category";
+import { useProjects } from "@/provider/ProjectsProvider";
+import { useRouter } from "next/router";
   
   const NewProjectScreen: React.FC = () => {
     const [nameInput, setNameInput] = useState("");
     const [descriptionInput, setDescriptionInput] = useState("");
     const [categoryInput, setCategoryInput] = useState<string[]>([]);
     const [file, setFile] = useState<any>([]);
+    const toast = useToast()
+    const sessionContext = useSession()
+    const projectsContext = useProjects()
+    const router = useRouter()
   
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setNameInput(event.target.value);
@@ -35,24 +45,66 @@ import { NewProject } from "@/interfaces/NewProject";
     };
   
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const selectedFile = event.target.files[0];
-      if (selectedFile) {
-        setFile(selectedFile.name);
-      } else {
-        setFile("");
+      if(event.target.files){
+          const selectedFile = event.target.files[0];
+        if (selectedFile) {
+          setFile(selectedFile.name);
+        } else {
+          setFile("");
+        }
       }
     };
   
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+     /* if(nameInput === "" || !nameInput){
+        return toast({
+          title:"Error",
+          description:"You must provide a name for the project"
+        })
+      }
+      if(categoryInput.length === 0){
+        return toast({
+          title:"Error",
+          description:"You must select at least one category for this project"
+        })
+      }
+      if(descriptionInput === "" || !descriptionInput){
+        return toast({
+          title:"Error",
+          description:"You must provide a description for the project"
+        })
+      }*/
       event.preventDefault();
-      const ProjectObject:NewProject = {
+
+      let imageURL = ""
+      let communityId = ""
+
+      const newProject = {
         name:nameInput,
         categories:categoryInput,
-        description:descriptionInput,
-        file:file,
-      }
-      console.log(ProjectObject);
-      
+        about:descriptionInput,
+        image: imageURL,
+        meta: {
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          deletedAt: null
+        },
+        communityId: communityId,
+      } as ProjectObject
+
+    projectsContext.createProject(newProject)
+      .then((createdProject) => {
+        /*toast({
+          title:"Done",
+          description:"Project created successfully"
+        })*/
+        router.replace(`${process.env.NEXT_PUBLIC_CURRENT_DOMAIN}/projectoverview?id=${createdProject?.id}`)
+      }).catch((e) => {
+        /*toast({
+          title:"Error",
+          description:e
+        })*/
+      })  
     };
   
     return (
@@ -93,7 +145,7 @@ import { NewProject } from "@/interfaces/NewProject";
                   colorScheme="green"
                 >
                   <Stack spacing={[1, 5]} direction={["column"]}>
-                    <Checkbox value="physics">physics</Checkbox>
+                    <Checkbox value="asd">physics</Checkbox>
                     <Checkbox value="chemistry">chemistry</Checkbox>
                     <Checkbox value="biology">biology</Checkbox>
                     <Checkbox value="astrology">astrology</Checkbox>

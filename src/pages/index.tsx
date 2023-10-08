@@ -12,6 +12,7 @@ import Categories from "../data/categories.json";
 import Category from "@/interfaces/Category";
 import { useProjects } from "@/provider/ProjectsProvider";
 import { SetStateAction, useEffect, useState } from "react";
+import ICategoryCard from "@/interfaces/Category";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,7 +51,7 @@ export default function Home() {
     <>
       <Header onChangeInput={handleInputChange} />
       <Flex flexWrap="wrap">
-        {categoriesObjects.map((categoryObject: Category, index: number) => (
+        {categoriesObjects.map((categoryObject: ICategoryCard, index: number) => (
           <Box
             key={index}
             flex={1}

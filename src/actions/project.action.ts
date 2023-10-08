@@ -3,6 +3,7 @@ import { ProjectFile } from "@/types/Project"
 import { collection, query, orderBy, onSnapshot, getDocs } from "firebase/firestore"
 import {db} from "../../firebase"
 import { addDoc } from "firebase/firestore";
+import { ProjectObject } from "@/interfaces/ProjectObject";
 
 async function get(){
     /*let projects: Project[] = [
@@ -48,19 +49,19 @@ async function get(){
     ]
     return projects*/
     const querySnapshot = await getDocs(collection(db, "projects"));
-    const projectArray = querySnapshot.docs.map((doc) => doc.data()) as Project[]
+    const projectArray = querySnapshot.docs.map((doc) => ({...doc.data(), id:doc.id})) as Project[]
     console.log(projectArray)
     return projectArray
 }
 
-async function add(project:Project):Promise<Project | undefined>{
+async function add(project:ProjectObject):Promise<Project | undefined>{
     try {
         const docRef = await addDoc(collection(db, "projects"), project);
         console.log("Document written ", docRef.id);
-        return {
+        return ({
             ...project,
-            id: docRef.id
-        } as Project
+            id:docRef.id
+        } as Project)
     } catch (e) {
         console.error("Error adding document: ", e);
         throw e

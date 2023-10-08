@@ -4,10 +4,11 @@ type Project = {
   id: string;
   file: ProjectFile[];
   name: string;
-  categories: Category[];
+  categories: string[];
   meta: Meta;
   about: string;
-  community: Community;
+  communityId: string;
+  image: string;
 };
 
 type ProjectFile = {
