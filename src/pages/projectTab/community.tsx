@@ -18,9 +18,9 @@ import {
   useClipboard,
   useColorModeValue,
   VStack,
-  Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Community() {
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
@@ -71,8 +71,10 @@ export default function Community() {
         {userIsLoggedIn ? "Log out" : "Log in"}
       </Button>
       <Flex bg="gray.200" mt={"10"} direction="column" w="100%">
-        <Link fontSize={"20"} color="blue.500">
-          user.name
+        <Link href="/">
+          <Text fontSize={"20"} color="blue.500">
+            user.name
+          </Text>
         </Link>
         <Text fontSize={"18"}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, rerum?
