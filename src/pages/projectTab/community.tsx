@@ -99,7 +99,7 @@ export default function Community() {
           </Text>
         </Link>
         <Text fontSize={"18"}>
-          This is amazing! I've never think of it that way! this may lead to a
+          This is amazing! I ve never think of it that way! this may lead to a
           great improvement in physics studies.
         </Text>
       </Flex>
