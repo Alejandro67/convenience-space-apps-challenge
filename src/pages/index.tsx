@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, Link } from "@chakra-ui/react";
 import Header from "@/components/header";
 import CategoryCard from "../components/categoryCard";
 import Footer from "@/components/footer";
@@ -61,6 +61,7 @@ export default function Home() {
             <CategoryCard category={categoryObject} />
           </Box>
         ))}
+        <Link href="/projectoverview">Projects</Link>
       </Flex>
       <Footer />
     </>
