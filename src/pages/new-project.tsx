@@ -19,6 +19,10 @@ import { Project } from "@/types/Project";
 import Category from "@/interfaces/Category";
 import { useProjects } from "@/provider/ProjectsProvider";
 import { useRouter } from "next/router";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../../firebase";
+import {v4} from "uuid"
+import { url } from "inspector";
   
   const NewProjectScreen: React.FC = () => {
     const [nameInput, setNameInput] = useState("");
@@ -48,13 +52,25 @@ import { useRouter } from "next/router";
       if(event.target.files){
           const selectedFile = event.target.files[0];
         if (selectedFile) {
-          setFile(selectedFile.name);
+          setFile(selectedFile);
         } else {
           setFile("");
         }
       }
     };
   
+    async function handleStoreImage(){
+      if(!file) return
+      try{
+        const imageRef = ref(storage, `projectImages/${v4()}`)
+        let result = await uploadBytes(imageRef, file)
+        let url = await getDownloadURL(result.ref)
+        return url
+      }catch(e){
+        throw e
+      }
+    }
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       if(nameInput === "" || !nameInput){
         return alert("You must provide a name for the project")
@@ -67,14 +83,14 @@ import { useRouter } from "next/router";
       }
       event.preventDefault();
 
-      let imageURL = ""
       let communityId = ""
 
-      const newProject = {
+    handleStoreImage().then((url) => {
+      let newProject = {
         name:nameInput,
         categories:categoryInput,
         about:descriptionInput,
-        image: imageURL,
+        image: url,
         meta: {
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -83,8 +99,7 @@ import { useRouter } from "next/router";
         communityId: communityId,
         author: sessionContext.data?.user?.email
       } as ProjectObject
-
-    projectsContext.createProject(newProject)
+      projectsContext.createProject(newProject)
       .then((createdProject) => {
         /*toast({
           title:"Done",
@@ -97,6 +112,11 @@ import { useRouter } from "next/router";
           description:e
         })*/
       })  
+    }) 
+    .catch((e) => {
+      alert(`Error on upload image: ${e}`)
+    })
+    
     };
   
     return (
