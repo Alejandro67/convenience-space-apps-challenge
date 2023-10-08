@@ -2,8 +2,9 @@ import { Project } from "@/types/Project"
 import { ProjectFile } from "@/types/Project"
 import { collection, query, orderBy, onSnapshot, getDocs } from "firebase/firestore"
 import {db} from "../../firebase"
+import { addDoc } from "firebase/firestore";
 
-export default async function getProjects(){
+async function get(){
     /*let projects: Project[] = [
         {
             id: "1",
@@ -51,3 +52,24 @@ export default async function getProjects(){
     console.log(projectArray)
     return projectArray
 }
+
+async function add(project:Project):Promise<Project | undefined>{
+    try {
+        const docRef = await addDoc(collection(db, "projects"), project);
+        console.log("Document written ", docRef.id);
+        return {
+            ...project,
+            id: docRef.id
+        } as Project
+    } catch (e) {
+        console.error("Error adding document: ", e);
+        throw e
+    }
+}
+
+const ProjectActions = {
+    add,
+    get
+}
+
+export default ProjectActions
